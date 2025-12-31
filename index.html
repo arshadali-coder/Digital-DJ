@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Digital DJ</title>
+  <style>
+    body { background:#020617; color:white; font-family:Arial; padding:40px }
+    .card { background:#0f172a; padding:20px; margin-top:20px; border-radius:12px }
+    button, select, input { padding:10px }
+  </style>
+</head>
+<body>
+
+<h1>🎧 Digital DJ</h1>
+
+<select id="mood">
+  <option>Happy</option>
+  <option>Focused</option>
+  <option>Chill</option>
+  <option>Stressed</option>
+</select>
+
+<button onclick="getPlaylist()">Generate Playlist</button>
+
+<div id="output"></div>
+
+<script>
+const API = "https://arshad.pythonanywhere.com";
+
+async function getPlaylist() {
+  const mood = document.getElementById("mood").value;
+
+  const res = await fetch(API + "/playlist", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ mood })
+  });
+
+  const data = await res.json();
+
+  let html = `<div class="card"><h2>${mood} Playlist</h2><ol>`;
+  data.playlist.forEach(s => {
+    html += `<li>${s.Song} – ${s.Artist} (${s.Duration} min)</li>`;
+  });
+  html += `</ol>
+    <input type="number" id="rating" min="1" max="5">
+    <button onclick="rate('${mood}')">Rate</button>
+  </div>`;
+
+  if (data.recommendation) {
+    html += `<p>Users who liked ${mood} also liked ${data.recommendation}</p>`;
+  }
+
+  html += `<div class="card">
+    <b>Top Moods:</b> ${JSON.stringify(data.analytics.top_moods)}<br>
+    <b>Avg Ratings:</b> ${JSON.stringify(data.analytics.avg_ratings)}
+  </div>`;
+
+  document.getElementById("output").innerHTML = html;
+}
+
+async function rate(mood) {
+  const rating = document.getElementById("rating").value;
+
+  await fetch(API + "/rate", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ mood, rating })
+  });
+
+  alert("Rating saved!");
+}
+</script>
+
+</body>
+</html>

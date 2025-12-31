@@ -1,0 +1,101 @@
+Song,Artist,Duration,Mood
+Tera Muskurana,Arjit Dev,3.4,Happy
+Dil Ki Dhoop,Neeti Raj,4.0,Happy
+Aaja Safar Pe,Rohan Malik,3.2,Happy
+Khushiyon Ki Raah,Kriti Bansal,3.6,Happy
+Har Lamha Khil,Uday Mehta,3.1,Happy
+Rangon Bhari Shaam,Meera Joshi,3.7,Happy
+Nacha Re Man,Varun Khanna,3.3,Happy
+Dhoom Dhadaka,Disha Verma,3.5,Happy
+Shaam Suhani,Aayush Thakur,3.0,Happy
+Mastani Raatein,Simran Gill,3.8,Happy
+Zindagi Mera Geet,Aditya Kapoor,3.9,Happy
+Chandni Ka Jadoo,Anaya Singh,3.2,Happy
+Tu Hi Khushi,Rehaan Oberoi,3.6,Happy
+Dil Se Muskurao,Palak Sharma,3.4,Happy
+Yaariyon Ka Safar,Kabir Anand,3.5,Happy
+Baarish Mein Nacho,Ritu Chauhan,3.1,Happy
+Dhol Baje Re,Harsh Vardhan,3.3,Happy
+Mitti Di Khushboo,Jasleen Kaur,3.7,Happy
+Pagalpan Ki Raat,Vikram Nair,3.8,Happy
+Bindaas Dil,Bhavya Jain,3.0,Happy
+Maujon Ka Mela,Rajeev Suri,3.2,Happy
+Sitaron Ki Mehfil,Sanjana Rao,3.9,Happy
+Chak De Jashn,Manav Talwar,3.4,Happy
+Dil Dance Maare,Khushi Arora,3.6,Happy
+Nach Le Soniye,Kunal Tandon,3.3,Happy
+Manzil Ka Junoon,Kabir Sethi,4.1,Focused
+Socho Zara,Ananya Rai,3.8,Focused
+Nayi Dishayein,Dev Arora,3.5,Focused
+Lakshya Pe Nazar,Aditi Menon,4.0,Focused
+Safar Tanha Sahi,Reyansh Pillai,3.9,Focused
+Bechain Sapne,Prerna Sood,3.7,Focused
+Chal Aage Tu,Aarav Iyer,3.6,Focused
+Zidd Hai Jeet Ki,Megha Trivedi,4.2,Focused
+Raaste Khul Gaye,Sameer Saxena,3.4,Focused
+Soch Ka Samandar,Nikita Bedi,4.1,Focused
+Raat Bhar Padhna,Akash Mishra,3.8,Focused
+Hauslon Ki Udaan,Shreya Venkatesh,3.9,Focused
+Nind Udi Udi,Abhinav Grover,3.5,Focused
+Man Mein Shanti,Isha Kapoor,3.6,Focused
+Akelapan Ka Raag,Tejas Bhandari,4.0,Focused
+Kagazon Par Sapne,Sanvi Chawla,3.7,Focused
+Zameen Se Aasman,Arnav Juneja,4.3,Focused
+Manzil Door Sahi,Tanya Gulati,3.8,Focused
+Lamhe Ruk Gaye,Vihaan Suri,3.6,Focused
+Dil Ka Irada,Muskaan Jha,4.2,Focused
+Sannata Saaj,Krish Malhotra,3.9,Focused
+Bas Ek Soch,Anjali Deshmukh,3.4,Focused
+Saanson Ka Lehja,Arman Qureshi,3.7,Focused
+Mehnat Ka Phal,Divya Nanda,4.5,Focused
+Roshni Ka Raasta,Parth Grover,3.8,Focused
+Shaant Leher,Diya Narang,3.9,Chill
+Raat Ka Safar,Tushar Kapoor,4.0,Chill
+Chand Aur Coffee,Myra Bedi,3.5,Chill
+Samandar Sa Sukoon,Ishan Talwar,3.7,Chill
+Hawa Ka Geet,Anvi Khatri,3.2,Chill
+Sitaron Ka Saaya,Rudra Sen,3.6,Chill
+Narmi Si Baaten,Kiara Mathur,3.4,Chill
+Aahista Chal,Zaid Khan,3.8,Chill
+Nimmi Si Raat,Avantika Roy,3.7,Chill
+Lahrayein Shaant,Prateek Anand,3.9,Chill
+Khamosh Paani,Sana Sheikh,3.3,Chill
+Gulabi Aasman,Rehan Bux,3.6,Chill
+Coffee Shop Mein,Navya Bajaj,3.1,Chill
+Dil Halka Halka,Samar Batra,3.5,Chill
+Mitti Ka Sa Sugandh,Anushka Dutt,3.8,Chill
+Palkon Pe Khwab,Aryan Suri,4.1,Chill
+Subah Ki Hawa,Seher Gill,3.2,Chill
+Neele Lamhe,Aadi Verma,3.7,Chill
+Nadiya Ka Kinara,Tripti Raina,4.0,Chill
+Boondon Ki Lori,Manan Ghosh,3.6,Chill
+Raaste Benaam,Rhea Talwar,3.9,Chill
+Seaside Safar,Ayushmaan Lal,3.3,Chill
+Narm Muskaan,Ankit Walia,3.4,Chill
+Halka Sa Suroor,Mehek Chhabra,4.2,Chill
+Baarish Ki Khushboo,Ishaan Bakshi,3.8,Chill
+Stressed Song 1,Artist G,4.2,Stressed
+Stressed Song 2,Artist H,3.8,Stressed
+Dhadkan Tez Hai,Ankit Rana,4.1,Stressed
+Andheri Raatein,Saumya Hegde,3.9,Stressed
+Bekhudi Mein Hum,Arnav Malhotra,4.3,Stressed
+Chinta Ka Jaam,Kanika Ahuja,3.7,Stressed
+Saaye Peechhe,Prateek Rawat,4.0,Stressed
+Raat Bhar Jaage,Dia Kaul,4.4,Stressed
+Bechain Sa Dil,Yuvi Mehra,3.8,Stressed
+Khali Galiyan,Ruhani Seth,4.2,Stressed
+Toote Sapne,Aryan Chhabra,4.5,Stressed
+Aansuon Ka Safar,Nidhi Kapoor,3.9,Stressed
+Band Kamra Saans,Parth Jain,4.1,Stressed
+Ghum Ka Saaya,Risha Nair,3.8,Stressed
+Dil Mein Darr,Advik Kohli,4.0,Stressed
+Tanav Ke Pal,Samaira Bansal,4.3,Stressed
+Aakhri Koshish,Vivaan Tripathi,4.6,Stressed
+Manzil Gum Hai,Charvi Sinha,3.7,Stressed
+Honthon Pe Khamoshi,Sharad Gupta,4.2,Stressed
+Ajnabee Raaste,Aashi Yadav,3.9,Stressed
+Dil Ki Ulfat,Rohan Sengar,4.1,Stressed
+Khoya Sa Insaan,Meera Kulkarni,4.4,Stressed
+Rishtey Dhaage Se,Devina Madan,3.8,Stressed
+Nind Churayi Fikar,Shlok Saxena,4.0,Stressed
+Saanson Par Bhoj,Tanya Chopra,4.5,Stressed

@@ -4,137 +4,500 @@
   <meta charset="UTF-8" />
   <title>Digital DJ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: Arial, sans-serif;
-      background: #020617;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #e5e7eb;
-      padding: 40px;
-      max-width: 700px;
-      margin: auto;
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.6;
     }
-    h1 { color: #22d3ee; }
-    select, button, input {
-      padding: 10px;
-      margin-top: 10px;
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      animation: fadeIn 0.6s ease-out;
+    }
+    
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .subtitle {
+      color: #94a3b8;
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+    }
+    
+    .mood-selector {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      animation: slideUp 0.6s ease-out;
+    }
+    
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #22d3ee;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    select, input {
       width: 100%;
-      border-radius: 6px;
-      border: none;
-    }
-    button {
-      background: #22d3ee;
-      color: #020617;
-      font-weight: bold;
+      padding: 14px 16px;
+      background: #0f172a;
+      border: 2px solid #1e293b;
+      border-radius: 12px;
+      color: #e5e7eb;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      appearance: none;
       cursor: pointer;
     }
-    .card {
-      background: #0f172a;
-      padding: 20px;
-      margin-top: 20px;
-      border-radius: 12px;
+    
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2322d3ee' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
     }
-    li { margin-bottom: 6px; }
-    small { color: #94a3b8; }
+    
+    select:hover, select:focus, input:hover, input:focus {
+      border-color: #22d3ee;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1);
+    }
+    
+    button {
+      width: 100%;
+      padding: 16px;
+      margin-top: 16px;
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+      color: #020617;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(34, 211, 238, 0.4);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      padding: 24px;
+      margin-bottom: 24px;
+      border-radius: 16px;
+      animation: slideUp 0.6s ease-out;
+    }
+    
+    .card h2, .card h3 {
+      color: #22d3ee;
+      margin-bottom: 20px;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+    }
+    
+    .playlist-grid {
+      display: grid;
+      gap: 12px;
+    }
+    
+    .song-item {
+      background: #0f172a;
+      padding: 16px;
+      border-radius: 12px;
+      border-left: 4px solid #22d3ee;
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .song-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.2);
+    }
+    
+    .song-info {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .song-title {
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .song-artist {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+    
+    .song-duration {
+      color: #22d3ee;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    
+    .recommendation {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    .recommendation strong {
+      color: #22d3ee;
+    }
+    
+    .rating-container {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    @media (min-width: 640px) {
+      .rating-container {
+        grid-template-columns: 1fr auto;
+      }
+      
+      .rating-container button {
+        margin-top: 0;
+      }
+    }
+    
+    .analytics-grid {
+      display: grid;
+      gap: 16px;
+    }
+    
+    @media (min-width: 640px) {
+      .analytics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .stat-card {
+      background: #0f172a;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+    
+    .stat-title {
+      color: #94a3b8;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    
+    .stat-value {
+      color: #22d3ee;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    
+    .rating-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    
+    .rating-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: #0f172a;
+      border-radius: 8px;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #22d3ee;
+    }
+    
+    .spinner {
+      border: 3px solid rgba(34, 211, 238, 0.2);
+      border-top: 3px solid #22d3ee;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+    
+    .error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
-
 <body>
-  <h1>🎧 Digital DJ</h1>
-  <p>Select your mood and get a curated playlist.</p>
-
-  <select id="mood">
-    <option value="Happy">Happy</option>
-    <option value="Focused">Focused</option>
-    <option value="Chill">Chill</option>
-    <option value="Stressed">Stressed</option>
-  </select>
-
-  <button onclick="generatePlaylist()">Generate Playlist</button>
-
-  <div id="playlist"></div>
-
-  <div id="rating" style="display:none;">
-    <input type="number" id="ratingValue" min="1" max="5" placeholder="Rate (1–5)">
-    <button onclick="submitRating()">Submit Rating</button>
+  <div class="container">
+    <header>
+      <h1>🎧 Digital DJ</h1>
+      <p class="subtitle">Select your mood and get a curated playlist</p>
+    </header>
+    
+    <div class="mood-selector">
+      <label for="mood">Choose Your Mood</label>
+      <select id="mood">
+        <option value="Happy">😊 Happy</option>
+        <option value="Focused">🎯 Focused</option>
+        <option value="Chill">😌 Chill</option>
+        <option value="Stressed">😰 Stressed</option>
+      </select>
+      <button id="generateBtn" onclick="generatePlaylist()">Generate Playlist</button>
+    </div>
+    
+    <div id="error" class="error hidden"></div>
+    
+    <div id="playlist"></div>
+    
+    <div id="rating" class="card hidden">
+      <h3>Rate This Playlist</h3>
+      <div class="rating-container">
+        <input type="number" id="ratingValue" min="1" max="5" placeholder="Rate from 1 to 5">
+        <button onclick="submitRating()">Submit Rating</button>
+      </div>
+    </div>
+    
+    <div id="analytics"></div>
   </div>
-
-  <div id="analytics"></div>
 
   <script>
     const API_BASE = "https://arshad.pythonanywhere.com";
     let currentMood = null;
-
+    
+    function showError(message) {
+      const errorDiv = document.getElementById("error");
+      errorDiv.textContent = message;
+      errorDiv.classList.remove("hidden");
+      setTimeout(() => errorDiv.classList.add("hidden"), 5000);
+    }
+    
+    function showLoading(elementId) {
+      const element = document.getElementById(elementId);
+      element.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading...</p></div>';
+    }
+    
     async function generatePlaylist() {
       const mood = document.getElementById("mood").value;
+      const btn = document.getElementById("generateBtn");
       currentMood = mood;
-
-      const res = await fetch(`${API_BASE}/playlist`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mood })
-      });
-
-      const data = await res.json();
-
-      if (data.error) {
-        alert(data.error);
-        return;
+      
+      btn.disabled = true;
+      btn.textContent = "Generating...";
+      showLoading("playlist");
+      document.getElementById("rating").classList.add("hidden");
+      
+      try {
+        const res = await fetch(`${API_BASE}/playlist`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mood })
+        });
+        
+        const data = await res.json();
+        
+        if (data.error) {
+          showError(data.error);
+          document.getElementById("playlist").innerHTML = "";
+          return;
+        }
+        
+        let html = `<div class="card"><h2>${data.mood} Playlist</h2><div class="playlist-grid">`;
+        
+        data.playlist.forEach((song, index) => {
+          html += `
+            <div class="song-item" style="animation-delay: ${index * 0.1}s">
+              <div class="song-info">
+                <div class="song-title">${song.Song}</div>
+                <div class="song-artist">${song.Artist}</div>
+              </div>
+              <div class="song-duration">${song.Duration} min</div>
+            </div>
+          `;
+        });
+        
+        html += `</div>`;
+        
+        if (data.recommendation) {
+          html += `
+            <div class="recommendation">
+              🔁 Users who liked <strong>${data.mood}</strong> also enjoyed <strong>${data.recommendation}</strong>
+            </div>
+          `;
+        }
+        
+        html += `</div>`;
+        document.getElementById("playlist").innerHTML = html;
+        document.getElementById("rating").classList.remove("hidden");
+        loadAnalytics();
+      } catch (error) {
+        showError("Failed to generate playlist. Please try again.");
+        document.getElementById("playlist").innerHTML = "";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Generate Playlist";
       }
-
-      let html = `<div class="card"><h2>${data.mood} Playlist</h2><ol>`;
-      data.playlist.forEach(song => {
-        html += `<li>${song.Song} – ${song.Artist} <small>(${song.Duration} min)</small></li>`;
-      });
-      html += `</ol></div>`;
-
-      if (data.recommendation) {
-        html += `<p>🔁 Users who liked <b>${data.mood}</b> also liked <b>${data.recommendation}</b></p>`;
-      }
-
-      document.getElementById("playlist").innerHTML = html;
-      document.getElementById("rating").style.display = "block";
-
-      loadAnalytics();
     }
-
+    
     async function submitRating() {
       const rating = document.getElementById("ratingValue").value;
-
+      
       if (!rating || rating < 1 || rating > 5) {
-        alert("Please enter a rating between 1 and 5.");
+        showError("Please enter a rating between 1 and 5.");
         return;
       }
-
-      await fetch(`${API_BASE}/rate`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mood: currentMood,
-          rating: parseInt(rating)
-        })
-      });
-
-      alert("Rating saved!");
-      document.getElementById("ratingValue").value = "";
-      loadAnalytics();
-    }
-
-    async function loadAnalytics() {
-      const res = await fetch(`${API_BASE}/analytics`);
-      const data = await res.json();
-
-      let html = `<div class="card"><h3>📊 Analytics</h3>`;
-      html += `<p><b>Top Moods:</b> ${data.top_moods.map(m => m[0]).join(", ")}</p>`;
-      html += `<p><b>Average Ratings:</b></p><ul>`;
-
-      for (const mood in data.average_ratings) {
-        html += `<li>${mood}: ${data.average_ratings[mood]} ⭐</li>`;
+      
+      try {
+        await fetch(`${API_BASE}/rate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            mood: currentMood,
+            rating: parseInt(rating)
+          })
+        });
+        
+        document.getElementById("ratingValue").value = "";
+        showError("✓ Rating saved successfully!");
+        loadAnalytics();
+      } catch (error) {
+        showError("Failed to submit rating. Please try again.");
       }
-
-      html += `</ul></div>`;
-      document.getElementById("analytics").innerHTML = html;
     }
+    
+    async function loadAnalytics() {
+      try {
+        const res = await fetch(`${API_BASE}/analytics`);
+        const data = await res.json();
+        
+        let html = `<div class="card"><h3>📊 Analytics</h3><div class="analytics-grid">`;
+        
+        html += `
+          <div class="stat-card">
+            <div class="stat-title">Top Moods</div>
+            <div class="stat-value">${data.top_moods.map(m => m[0]).join(", ") || "No data yet"}</div>
+          </div>
+        `;
+        
+        const avgRatings = Object.entries(data.average_ratings);
+        if (avgRatings.length > 0) {
+          html += `<div class="stat-card"><div class="stat-title">Average Ratings</div><ul class="rating-list">`;
+          avgRatings.forEach(([mood, rating]) => {
+            html += `
+              <li class="rating-item">
+                <span>${mood}</span>
+                <span class="stat-value">${rating} ⭐</span>
+              </li>
+            `;
+          });
+          html += `</ul></div>`;
+        }
+        
+        html += `</div></div>`;
+        document.getElementById("analytics").innerHTML = html;
+      } catch (error) {
+        console.error("Failed to load analytics:", error);
+      }
+    }
+    
+    // Load analytics on page load
+    loadAnalytics();
   </script>
 </body>
 </html>
